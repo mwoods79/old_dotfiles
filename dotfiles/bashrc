@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+
+# ==============================================================================
+# Author => "Micah Woods"
+# Date => "Tue Sep 29 15:37:40 CDT 2009"
+# ==============================================================================
+
+# ==============================================================================
+# In order to use this file reference it in ~/.bashrc
+#
+# if [ -f ~/bin/dotfiles/bashrc ]; then
+#   source ~/bin/dotfiles/bashrc
+# fi
+# ==============================================================================
+
+
+# Load files from repository
+source ~/bin/dotfiles/bash/env
+source ~/bin/dotfiles/bash/config
+source ~/bin/dotfiles/bash/aliases

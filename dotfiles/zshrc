@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+
+# ==============================================================================
+# Author => "Micah Woods"
+# Date => "Tue Sep 29 15:48:51 CDT 2009"
+# ==============================================================================
+
+# ==============================================================================
+# # In order to use this file reference it in ~/.zshrc
+#
+# if [ -f ~/bin/dotfiles/zshrc ]; then
+#   source ~/bin/dotfiles/zshrc
+# fi
+# ==============================================================================
+
+source ~/bin/dotfiles/zsh/env
+source ~/bin/dotfiles/zsh/config
+source ~/bin/dotfiles/zsh/aliases
