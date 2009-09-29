@@ -4,7 +4,9 @@
 
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases'
-alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
+alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload' 
+
+# Edit aliases
 alias ee="mate ~/bin/dotfiles/bash/env"
 
 # Quicker cd
@@ -233,4 +235,9 @@ function __rm_single_file(){
     fi
 }
 
+# ==============================================================================
+# Terminal helpers
+# ==============================================================================
+
 alias t='tree -C'
+alias cw="cd ~/Workspace"
