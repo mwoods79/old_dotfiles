@@ -79,7 +79,7 @@ function new-hg() {
 # Originally alias ungit="find . -name '.git' -exec rm -rf {};"
 # This was potentially dangerous in that it would remove nested repo's
 # ==============================================================================
-alias ungit="find . -name '.git' | head -1 | xargs rm -rf"
+alias ungit="find . -name '.git' -maxdepth 1 | xargs rm -rf"
 
 alias gb='git branch'
 alias gba='git branch -a'
