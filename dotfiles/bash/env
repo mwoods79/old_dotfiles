@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 # Set PATH, CDPATH, EDITOR, etc.
 export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH

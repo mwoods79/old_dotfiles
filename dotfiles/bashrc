@@ -11,6 +11,9 @@
 # if [ -f ~/bin/dotfiles/bashrc ]; then
 #   source ~/bin/dotfiles/bashrc
 # fi
+#
+# Or simply link this file.
+# ln -s ~/.bashrc ~/bin/dotfiles/bashrc
 # ==============================================================================
 
 
@@ -18,3 +21,8 @@
 source ~/bin/dotfiles/bash/env
 source ~/bin/dotfiles/bash/config
 source ~/bin/dotfiles/bash/aliases
+
+# bash-completion
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi

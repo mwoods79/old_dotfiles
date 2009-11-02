@@ -1,6 +1,12 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
-# Command Enhancements
+# ==============================================================================
+# Terminal helpers
+# ==============================================================================
+
+# Tree
+alias t='tree -C'
+alias ta="tree -Ca"
 
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases'
@@ -11,29 +17,33 @@ alias ee="mate ~/bin/dotfiles/bash/env"
 
 # Quicker cd
 alias cg='cd /Library/Ruby/Gems/1.8/gems/'
+
 function cr() {
  cd ~/repos/$*
 }
 
 # Common -- Some are from Damian Conway
 alias a='ls -A' # -A all except literal . ..
-alias la="ls -A -l -G"
+alias la="ls -AlG"
+alias l.='ls -d .[^.]*'
+alias l='ls -lhGt'  # -l long listing, most recent first
+alias lh="ls -lh"
+alias ll='ls -lhG'  # -l long listing, human readable, no group info
+alias lt='ls -lt' # sort with recently modified first
+
 alias c='clear'
+alias cls='clear; ls'
+
+alias s='cd ..'   # up one dir
 alias cdd='cd -'  # goto last dir cd'ed from
 alias cl='clear; l'
 function cdc() { 
     cd $1; ls 
 }
-alias cls='clear; ls'
+
 alias h='history'
-alias l.='ls -d .[^.]*'
-alias l='ls -lhGt'  # -l long listing, most recent first
-                    # -G color
-alias lh="ls -lh"
-alias ll='ls -lhG'  # -l long listing, human readable, no group info
-alias lt='ls -lt' # sort with recently modified first
+
 alias md='mkdir -p'
-alias s='cd ..'   # up one dir
 
 function take() { 
     mkdir -p "$1"
@@ -41,44 +51,16 @@ function take() {
 }
 
 alias e='exit'
-alias k9="killall -9"
-function killnamed () { 
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill 
-}
-function zipr() {
-  zip -r $1.zip $1
-}
-
-# Finder
-alias o='open . &'
-alias ff='open -a Firefox'
-
-# General code
-
-# From Chris Wanstrath
-function pless() { 
-    pygmentize $1 | less -r 
-}
 
 # Processes
 alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
-# Mercurial hg
-function new-hg() {
-    ssh hg@example.com "hg init $1"
-    hg clone ssh://hg@example.com/$1
-}
-
 # ==============================================================================
 # Git
 # ==============================================================================
 
-# ==============================================================================
-# Modified "ungit"
-# Originally alias ungit="find . -name '.git' -exec rm -rf {};"
-# This was potentially dangerous in that it would remove nested repo's
-# ==============================================================================
+# This works only if in the root of the Repository.
 alias ungit="find . -name '.git' -maxdepth 1 | xargs rm -rf"
 
 alias gb='git branch'
@@ -101,42 +83,6 @@ alias gt='git status'
 alias g='git status'
 alias eg='mate .git/config'
 
-# Git clone from GitHub
-function gch() {
-  git clone git://github.com/$USER/$1.git
-}
-
-# Setup a tracking branch from [remote] [branch_name]
-function gbt() { 
-  git branch --track $2 $1/$2 && git checkout $2 
-}
-
-# Quickly clobber a file and checkout
-function grf() { 
-  rm $1
-  git checkout $1 
-}
-
-# Call from inside an initialized Git repo, with the name of the repo.
-function new-git() {
-  ssh git@example.com "mkdir $1.git && cd $1.git && git --bare init"
-  git remote add origin git@example.com:$1.git
-  git push origin master
-  git config branch.master.remote origin
-  git config branch.master.merge refs/heads/master
-  git config push.default current
-}
-
-# Text editing
-# Emacs
-alias em="open -a Emacs"
-alias emm="open -a Emacs ."
-# Regenerate TAGS file from file arguments
-function ct() {
-  rm -f TAGS
-  etags --append --output=TAGS $*
-}
-
 # TextMate
 alias et="mate"
 alias ett="mate ."
@@ -144,10 +90,6 @@ alias etr="mate app config lib db schema public spec test vendor/gems vendor/plu
 
 # Ruby
 alias r="rake"
-
-function markdown() { 
-/Applications/TextMate.app/Contents/SharedSupport/Support/bin/Markdown.pl $1 > $1.html 
-}
 
 # Rails
 alias mr='mongrel_rails start'
@@ -165,51 +107,6 @@ alias ts='thin start'
 alias aa='autotest'
 alias aaf='autotest -f' # Don't run all at start
 alias aas="./script/autospec"
-
-# Setup a tunnel
-function haproxyssh() { 
-  ssh -L7997:127.0.0.1:7997 deploy@$1.com 
-}
-
-# Syntax check Javascript
-function jsc() { 
-  jsl -conf /etc/jsl/jsl.conf -process $1 
-}
-
-function aiff2mp3() { 
-  lame -h -V 0 $1.aif $1.mp3 
-}
-function wav2mp3() { 
-  lame -h -V 0 $1.wav $1.mp3 
-}
-
-
-# XCode
-# Analyze release build
-alias sx="xcodebuild clean && ~/src/checker-0.146/scan-build -k -V xcodebuild"
-# Analyze test build
-alias sxt="xcodebuild -target Test clean && ~/src/checker-0.146/scan-build -k -V xcodebuild -target Test"
-# Call with -target Foo
-function sxx() { 
-  xcodebuild $* clean && ~/src/checker-0.146/scan-build -k -V xcodebuild $* 
-}
-
-alias ox="open *.xcodeproj"
-
-# Nginx
-function nginx_stop() {
-    ps ax | grep nginx | cut -d " " -f 1 | xargs sudo kill -9
-}
-function nginx_start() {
-    sudo /opt/nginx/sbin/nginx
-}
-
-# TaskPaper
-function new-tp() {
-    touch $1.taskpaper
-    open $1.taskpaper
-}
-
 
 # From http://github.com/suztomo/dotfiles
 function rmf(){
@@ -247,11 +144,3 @@ function __rm_single_file(){
         echo "No such file or directory: $file"
     fi
 }
-
-# ==============================================================================
-# Terminal helpers
-# ==============================================================================
-
-alias t='tree -C'
-alias ta="tree -Ca"
-alias cw="cd ~/Workspace"
