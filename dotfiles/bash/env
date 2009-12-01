@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
 # Set PATH, CDPATH, EDITOR, etc.
-export PATH=/opt/local/bin:/opt/local/sbin:~/bin:$PATH
+export PATH=~/bin:/usr/local/bin:$HOME/.gem/ruby/1.8/bin:$PATH
+
+# TODO Needs to look to see if brew is installed first.
+source `brew --prefix`/Library/Contributions/brew_bash_completion.sh

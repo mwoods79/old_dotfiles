@@ -23,6 +23,6 @@ source ~/bin/dotfiles/bash/config
 source ~/bin/dotfiles/bash/aliases
 
 # bash-completion
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  source `brew --prefix`/etc/bash_completion
 fi
