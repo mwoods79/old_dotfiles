@@ -1,27 +1,24 @@
-#!/usr/bin/perl                                                                                                         
-# a little script to get your network status                                                                            
+#!/usr/bin/env ruby
+                                                                                                        
+# Simple ruby script to display the ipaddress of your OS X computer                                                                           
 
-$en0_info = `ifconfig en0 | grep "inet" | grep -v 127.0.0.1`;
-$en1_info = `ifconfig en1 | grep "inet" | grep -v 127.0.0.1`;
-$airport_info = `/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I`;
+en0 = `ifconfig en0 | grep "inet" | grep -v 127.0.0.1`
+en1 = `ifconfig en1 | grep "inet" | grep -v 127.0.0.1`
+output = ""
 
-if($en0_info)
-{
-    $en0_info =~ /inet (.*) netmask/s;
-    $output .= "Ethernet : $1\n";
-
-}
+unless en0 == ""
+  en0 =~ /inet (.*) netmask/
+  output += "Ethernet : #{$1}\n"
 else
-{ $output .= "Ethernet : INACTIVE\n";}
+  output += "Ethernet : INACTIVE\n"
+end
 
 
-if($en1_info)
-{
-    $en1_info =~ /inet (.*) netmask/s;
-    $en1_info = $1;
-    $output .= "Airport  : $en1_info\n\n";
-}
+unless en1 == ""
+  en1 =~ /inet (.*) netmask/
+  output += "Airport  : #{$1}\n\n"
 else
-{ $output .= "Airport  : INACTIVE\n\n";}
+  output += "Airport  : INACTIVE\n\n"
+end
 
-print "$output";
+puts output
