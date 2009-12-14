@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-month=`date +%B`
-weather=`~/bin/weather -cf1 71115`
-
-echo "$month $weather"

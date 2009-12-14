@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Author => "Micah Woods"
+# Date => "December 14 2009"
+# ==============================================================================
+
+# homebrew completion
+if [ -f `brew --prefix`/Library/Contributions/brew_bash_completion.sh ]; then
+  source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+fi
+
+# bash completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  source `brew --prefix`/etc/bash_completion
+fi
+
+# git completion
+if [ -f `brew --prefix`/etc/git-completion.bash ]; then
+  source `brew --prefix`/etc/git-completion.bash
+fi
+
+# the following where taken from Ryan Bates dotfiles
+complete -C ~/.bash/completion_scripts/rake_completion -o default rake
+complete -C ~/.bash/completion_scripts/capistrano_completion -o default cap

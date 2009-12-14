@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# ==============================================================================
+# Author => "Micah Woods"
+# Date => "December 14 2009"
+# ==============================================================================
+
+# Directory that brew is installed
+BREWHOME=/usr/local
+
+# Add usr bin to path and brew to path.  And oh yeah, I gem without sudo!
+export PATH=$HOME/bin:$BREWHOME/bin:$HOME/.gem/ruby/1.8/bin:$PATH
+
+# Add homebrew man
+export MANPATH="/usr/local/share/man:$MANPATH"
