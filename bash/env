@@ -12,4 +12,4 @@ BREWHOME=/usr/local
 export PATH=$HOME/bin:$BREWHOME/bin:$HOME/.gem/ruby/1.8/bin:$PATH
 
 # Add homebrew man
-export MANPATH="/usr/local/share/man:$MANPATH"
+export MANPATH="$BREWHOME/share/man:$MANPATH"
