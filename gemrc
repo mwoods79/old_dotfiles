@@ -1,6 +1,6 @@
 --- 
 :verbose: true
-gem: --no-ri --no-rdoc
+gem: -n/usr/local/bin --no-ri --no-rdoc
 :update_sources: true
 :sources: 
 - http://gems.rubyforge.org

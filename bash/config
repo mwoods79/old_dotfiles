@@ -36,5 +36,5 @@ NONE="\[\033[0m\]"    # unsets color
 
 # Update the command prompt to be <user>:<current_directory>(git_branch) >
 # Note that the git branch is given a special color
-PS1="\n${G}[\u@\h]${W}: ${C}\w ${R}$(vcprompt)${G} \n\$${NONE} "
+PS1="\n${G}[\u@\h]${W}: ${C}\w ${R}\$(vcprompt)${G} \n\$${NONE} "
 
