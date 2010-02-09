@@ -12,7 +12,7 @@ M="\[\033[0;35m\]"    # magenta
 C="\[\033[0;36m\]"    # cyan
 W="\[\033[0;37m\]"    # white
 
-# emphasized (bolded) colors
+# emphasized (bold) colors
 EMK="\[\033[1;30m\]"
 EMR="\[\033[1;31m\]"
 EMG="\[\033[1;32m\]"
@@ -32,7 +32,7 @@ BGM="\[\033[45m\]"
 BGC="\[\033[46m\]"
 BGW="\[\033[47m\]"
 
-NONE="\[\033[0m\]"    # unsets color to term's fg color
+NONE="\[\033[0m\]"    # unsets color
 
 # Update the command prompt to be <user>:<current_directory>(git_branch) >
 # Note that the git branch is given a special color
