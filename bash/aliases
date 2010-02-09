@@ -9,14 +9,12 @@ alias t='tree -C'
 alias ta="tree -Ca"
 
 # Utility
-alias reload='. ~/.bashrc'
-alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload'
+alias reload='source ~/.bashrc'
+alias ea='mate -w ~/.dotfiles/bash/aliases && reload'
+alias ee="mate ~/.dotfiles/bash/env"
 
 # commands starting with % for pasting from web
 alias %=' '
-
-# Edit aliases
-alias ee="mate ~/bin/dotfiles/bash/env"
 
 # Quicker cd
 alias cg='cd /Library/Ruby/Gems/1.8/gems/'
@@ -50,8 +48,8 @@ alias h='history'
 alias md='mkdir -p'
 
 function take() { 
-    mkdir -p "$1"
-    cd "$1" 
+  mkdir -p "$1"
+  cd "$1" 
 }
 
 alias e='exit'
@@ -110,44 +108,50 @@ alias scaffold='script/generate nifty_scaffold'
 alias migrate='rake db:migrate db:test:clone'
 
 # TDD / BDD
-
 alias aa='autotest'
 alias aaf='autotest -f' # Don't run all at start
 alias aas="./script/autospec"
 
 # From http://github.com/suztomo/dotfiles
 function rmf(){
-    for file in $*
-    do
-        __rm_single_file $file
-    done
+  for file in $*
+  do
+    __rm_single_file $file
+  done
 }
 
 function __rm_single_file(){
-    if ! [ -d ~/.Trash/ ]
-    then
-        command /bin/mkdir ~/.Trash
-    fi
+  if ! [ -d ~/.Trash/ ]
+  then
+    command /bin/mkdir ~/.Trash
+  fi
 
-    if ! [ $# -eq 1 ]
-    then
-        echo "__rm_single_file: 1 argument required but $# passed."
-        exit
-    fi
+  if ! [ $# -eq 1 ]
+  then
+    echo "__rm_single_file: 1 argument required but $# passed."
+    exit
+  fi
 
-    if [ -e $1 ]
-    then
-        BASENAME=`basename $1`
-        NAME=$BASENAME
-        COUNT=0
-        while [ -e ~/.Trash/$NAME ]
-        do
-            COUNT=$(($COUNT+1))
-            NAME="$BASENAME.$COUNT"
-        done
+  if [ -e $1 ]
+  then
+    BASENAME=`basename $1`
+    NAME=$BASENAME
+    COUNT=0
+    while [ -e ~/.Trash/$NAME ]
+    do
+      COUNT=$(($COUNT+1))
+      NAME="$BASENAME.$COUNT"
+    done
 
-        command /bin/mv $1 ~/.Trash/$NAME
-    else
-        echo "No such file or directory: $file"
-    fi
+    command /bin/mv $1 ~/.Trash/$NAME
+  else
+    echo "No such file or directory: $file"
+  fi
 }
+
+# ==============================================================================
+# Postgresql
+# ==============================================================================
+
+alias start-pg='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias stop-pg='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
