@@ -25,7 +25,8 @@
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------
 
-
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
 set nocompatible
 
 
@@ -54,9 +55,6 @@ endfunction
 
 call Tabstyle_spaces()
 
-" Invisibles ******************************************************************
-nmap ,l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
 
 " Indenting *******************************************************************
 set ai " Automatically set the indent of a new line (local to buffer)
@@ -104,8 +102,9 @@ match LongLineWarning '\%120v.*' " Error format when a line is longer than 120
 
 
 " Line Wrapping ***************************************************************
+" Switch wrap off for everything
 set nowrap
-set linebreak  " Wrap at word
+" set linebreak  " Wrap at word
 
 
 " Mappings ********************************************************************
@@ -131,8 +130,9 @@ imap aa @
 " File Stuff ******************************************************************
 filetype plugin indent on
 " To show current filetype use: set filetype
-
-"autocmd FileType html :set filetype=xhtml 
+autocmd FileType html :set filetype=xhtml
+" For Haml
+au! BufRead,BufNewFile *.haml setfiletype haml
 
 
 " Inser New Line **************************************************************
@@ -154,7 +154,10 @@ set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
 
 " Invisible characters *********************************************************
-set listchars=trail:.,tab:>-,eol:$
+" Textmate style invisibles
+set listchars=tab:▸\ ,eol:¬
+" Maybe you like this better?
+" set list listchars=tab:»·,trail:·
 set nolist
 :noremap ,i :set list!<CR> " Toggle invisible chars
 
@@ -177,8 +180,8 @@ map E ge
 
 
 " Ruby stuff ******************************************************************
-"compiler ruby         " Enable compiler support for ruby
-"map <F5> :!ruby %<CR>
+compiler ruby         " Enable compiler support for ruby
+map <F5> :!ruby %<CR>
 
 
 " Omni Completion *************************************************************
@@ -209,17 +212,18 @@ let NERDTreeMouseMode=1
 
 
 " SnippetsEmu *****************************************************************
-"imap <unique> <C-j> <Plug>Jumper
-"let g:snip_start_tag = "_\."
-"let g:snip_end_tag = "\._"
-"let g:snip_elem_delim = ":"
-"let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
+imap <unique> <C-j> <Plug>Jumper
+let g:snip_start_tag = "_\."
+let g:snip_end_tag = "\._"
+let g:snip_elem_delim = ":"
+let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
 
 
 " fuzzyfinder_textmate ********************************************************
 map ,f :FuzzyFinderTextMate<CR>
 map ,b :FuzzyFinderBuffer<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+
 
 " autocomplpop ***************************************************************
 " complete option
@@ -228,6 +232,14 @@ map ,b :FuzzyFinderBuffer<CR>
 "set complete=.
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
+
+
+
+" -----------------------------------------------------------------------------  
+" |                               Startup                                     |
+" -----------------------------------------------------------------------------  
+" Open NERDTree on start
+autocmd VimEnter * exe 'NERDTree' | wincmd l
 
 
 
@@ -245,14 +257,6 @@ let g:AutoComplPop_BehaviorKeywordLength = 2
 "if has("gui_win32")
   "" 
 "endif
-
-
-
-" -----------------------------------------------------------------------------  
-" |                               Startup                                     |
-" -----------------------------------------------------------------------------  
-" Open NERDTree on start
-"autocmd VimEnter * exe 'NERDTree' | wincmd l 
 
 
 
