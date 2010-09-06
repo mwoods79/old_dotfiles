@@ -9,10 +9,16 @@
 BREWHOME=/usr/local
 
 # I gem without sudo!
-GEM_HOME="$BREWHOME/gems"
+#export GEM_HOME="$BREWHOME/gems"
 
 # Add username/bin to path and brew to path.
 export PATH="$HOME/bin:$BREWHOME/bin:$PATH"
 
 # Add homebrew man
 export MANPATH="$BREWHOME/share/man:$MANPATH"
+
+# This loads RVM into a shell session.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  
+
+# Not sure why I am doing this twice, but the RVM install says too?
+source ~/.rvm/scripts/rvm

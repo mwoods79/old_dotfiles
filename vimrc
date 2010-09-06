@@ -23,7 +23,7 @@
 " |   :call Tabstyle_spaces = set tab to 2 spaces                             |
 " |                                                                           |
 " | Put machine/user specific settings in ~/.vimrc.local                      |
-" -----------------------------------------------------------------------------  
+" -----------------------------------------------------------------------------
 
 
 set nocompatible
@@ -54,6 +54,9 @@ endfunction
 
 call Tabstyle_spaces()
 
+" Invisibles ******************************************************************
+nmap ,l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
 
 " Indenting *******************************************************************
 set ai " Automatically set the indent of a new line (local to buffer)
