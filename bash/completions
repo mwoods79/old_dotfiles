@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==============================================================================
 # Author => "Micah Woods"
-# Date => "December 14 2009"
+# Date => "October 19 2010"
 # ==============================================================================
 
 # homebrew completion
@@ -12,11 +12,6 @@ fi
 # bash completion
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   source `brew --prefix`/etc/bash_completion
-fi
-
-# git completion
-if [ -f `brew --prefix`/etc/git-completion.bash ]; then
-  source `brew --prefix`/etc/git-completion.bash
 fi
 
 # the following where taken from Ryan Bates dotfiles
