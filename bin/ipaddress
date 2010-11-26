@@ -2,23 +2,10 @@
                                                                                                         
 # Simple ruby script to display the ipaddress of your OS X computer                                                                           
 
-en0 = `ifconfig en0 | grep "inet" | grep -v 127.0.0.1`
-en1 = `ifconfig en1 | grep "inet" | grep -v 127.0.0.1`
-output = ""
-
-unless en0 == ""
-  en0 =~ /inet (.*) netmask/
-  output += "Ethernet : #{$1}\n"
-else
-  output += "Ethernet : INACTIVE\n"
+def get_ip(if_number)
+  ip = `ifconfig en#{if_number} | grep "inet" | grep -v 127.0.0.1`
+  ip.empty? ? "INACTIVE" : ip.match("inet (.*) netmask").captures.first
 end
 
-
-unless en1 == ""
-  en1 =~ /inet (.*) netmask/
-  output += "Airport  : #{$1}\n\n"
-else
-  output += "Airport  : INACTIVE\n\n"
-end
-
-puts output
+puts "Ethernet : #{get_ip(0)}\n"
+puts "Aiport   : #{get_ip(1)}\n"
