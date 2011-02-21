@@ -24,11 +24,10 @@
 " |                                                                           |
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------
-
+"
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
 
 " Tabs ************************************************************************
 "set sta " a <Tab> in an indent inserts 'shiftwidth' spaces
@@ -155,7 +154,7 @@ set vb t_vb= " Turn off bell, this could be more annoying, but I'm not sure how
 
 " Invisible characters *********************************************************
 " Textmate style invisibles
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:�\ ,eol:�
 " Maybe you like this better?
 " set list listchars=tab:»·,trail:·
 set nolist
@@ -230,8 +229,8 @@ let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 "set complete=.,w,b,u,t,k
 "let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
 "set complete=.
-let g:AutoComplPop_IgnoreCaseOption = 0
-let g:AutoComplPop_BehaviorKeywordLength = 2
+"let g:AutoComplPop_IgnoreCaseOption = 0
+"let g:AutoComplPop_BehaviorKeywordLength = 2
 
 
 
@@ -239,7 +238,7 @@ let g:AutoComplPop_BehaviorKeywordLength = 2
 " |                               Startup                                     |
 " -----------------------------------------------------------------------------  
 " Open NERDTree on start
-autocmd VimEnter * exe 'NERDTree' | wincmd l
+"autocmd VimEnter * exe 'NERDTree' | wincmd l
 
 
 

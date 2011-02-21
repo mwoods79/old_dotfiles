@@ -16,9 +16,6 @@ alias ee="mate ~/.dotfiles/bash/env"
 # commands starting with % for pasting from web
 alias %=' '
 
-# Quicker cd
-alias cg='cd /Library/Ruby/Gems/1.8/gems/'
-
 function cr() {
  cd ~/dev/repos/$*
 }
@@ -39,17 +36,17 @@ alias cls='clear; ls'
 alias s='cd ..'   # up one dir
 alias cdd='cd -'  # goto last dir cd'ed from
 alias cl='clear; l'
-function cdc() { 
-    cd $1; ls 
+function cdc() {
+    cd $1; ls
 }
 
 alias h='history'
 
 alias md='mkdir -p'
 
-function take() { 
+function take() {
   mkdir -p "$1"
-  cd "$1" 
+  cd "$1"
 }
 
 alias e='exit'
@@ -63,7 +60,7 @@ alias tm='top -o vsize' # memory
 # ==============================================================================
 
 # Commit pending changes and quote all args as message
-function gg() { 
+function gg() {
     git commit -v -a -m "$*"
 }
 
@@ -89,9 +86,6 @@ alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 # TextMate
 alias et="mate"
 alias ett="mate ."
-
-# Ruby
-alias r="rake"
 
 # Rails
 alias mr='mongrel_rails start'
