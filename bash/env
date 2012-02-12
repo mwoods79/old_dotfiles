@@ -10,7 +10,7 @@
 BREWHOME=/usr/local
 
 # Add username/bin to path and brew to path.
-export PATH="$HOME/bin:$BREWHOME/bin:$PATH"
+export PATH="$HOME/bin:$BREWHOME/bin:$BREWHOME/sbin:$PATH"
 
 # Add homebrew man
 export MANPATH="$BREWHOME/share/man:$MANPATH"
